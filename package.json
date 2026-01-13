@@ -1,0 +1,28 @@
+{
+  "name": "helix-macro-api",
+  "displayName": "Helix Macro API",
+  "version": "0.0.1",
+  "engines": { "vscode": "^1.80.0" },
+  "activationEvents": [ "*" ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "helixMacro.startRecording", "title": "Start Macro Recording" },
+      { "command": "helixMacro.stopRecording", "title": "Stop Macro Recording" },
+      { "command": "helixMacro.toggleRecording", "title": "Toggle Macro Recording" },
+      { "command": "helixMacro.replay", "title": "Replay Macro" },
+      { "command": "helixMacro.selectRegister", "title": "Select Macro Register" },
+      { "command": "helixMacro.performAction", "title": "Perform Action & Record" }
+    ],
+    "configuration": {
+      "title": "Helix Macro API",
+      "properties": {
+        "helixMacro.defaultRegister": {
+          "type": "string",
+          "default": "@",
+          "description": "The default register used when none is selected."
+        }
+      }
+    }
+  }
+}
