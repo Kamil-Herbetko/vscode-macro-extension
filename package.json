@@ -1,10 +1,16 @@
 {
-  "name": "helix-macro-api",
-  "displayName": "Helix Macro API",
+  "name": "vscode-modal-macro-extension",
+  "displayName": "Modal Macros",
+  "description": "This extension brings Helix/Vim-style macro recording, replaying, and register management to VS Code. It is specifically architected to serve as a backend for the [DCsunset/vscode-modal-editor](https://github.com/DCsunset/vscode-modal-editor) extension.",
   "version": "0.0.1",
-  "engines": { "vscode": "^1.80.0" },
-  "activationEvents": [ "*" ],
-  "main": "./out/extension.js",
+  "engines": {
+    "vscode": "^1.108.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       { "command": "helixMacro.startRecording", "title": "Start Macro Recording" },
@@ -23,6 +29,30 @@
           "description": "The default register used when none is selected."
         }
       }
-    }
+    }  
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.108.1",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "typescript-eslint": "^8.52.0",
+    "eslint": "^9.39.2",
+    "typescript": "^5.9.3",
+    "ts-loader": "^9.5.4",
+    "webpack": "^5.104.1",
+    "webpack-cli": "^6.0.1",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2"
   }
 }

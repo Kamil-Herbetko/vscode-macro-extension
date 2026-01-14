@@ -114,6 +114,7 @@ class MacroManager {
 
 export function activate(context: vscode.ExtensionContext) {
     const macroManager = new MacroManager();
+	console.log('Modal Macros Active');
 
     // 1. Intercept Typing (The core of text recording)
     // We register a high-priority override for the 'type' command
