@@ -9,7 +9,14 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:helixMacro.startRecording",
+    "onCommand:helixMacro.stopRecording",
+    "onCommand:helixMacro.toggleRecording",
+    "onCommand:helixMacro.replay",
+    "onCommand:helixMacro.selectRegister",
+    "onCommand:helixMacro.performAction"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [

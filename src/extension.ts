@@ -116,18 +116,9 @@ export function activate(context: vscode.ExtensionContext) {
     const macroManager = new MacroManager();
 	console.log('Modal Macros Active');
 
-    // 1. Intercept Typing (The core of text recording)
-    // We register a high-priority override for the 'type' command
-    const typeDisposable = vscode.commands.registerCommand('type', (args) => {
-        macroManager.recordText(args.text);
-        // Pass through to VS Code's native handler
-        return vscode.commands.executeCommand('default:type', args);
-    });
-
-    // 2. Register Commands
+    // 1. Register Commands
     context.subscriptions.push(
-        typeDisposable,
-
+        vscode.commands.registerCommand('helixMacro.registerText', (args) => macroManager.recordText(args.text)),
         vscode.commands.registerCommand('helixMacro.startRecording', () => macroManager.startRecording()),
         vscode.commands.registerCommand('helixMacro.stopRecording', () => macroManager.stopRecording()),
         vscode.commands.registerCommand('helixMacro.toggleRecording', () => macroManager.toggleRecording()),
